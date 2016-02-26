@@ -3,12 +3,13 @@ using System.Collections;
 
 public class PlayerMove : MonoBehaviour {
     Rigidbody2D r_body;
-    float move_force;
+    //float move_force;
+    float multiplier = 3f;
     float input_limit;
 	// Use this for initialization
 	void Start () {
         r_body = this.GetComponent<Rigidbody2D>();
-        move_force = 10f;
+        //move_force = 10f;
         input_limit = 0.1f;
         Screen.orientation = ScreenOrientation.Portrait;
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
@@ -23,7 +24,7 @@ public class PlayerMove : MonoBehaviour {
             r_body.drag = 10;
         } else {
             r_body.drag = 1;
-            r_body.velocity = new Vector2(Input.GetAxis("Horizontal") * 2, 0);
+            r_body.velocity = new Vector2(Input.GetAxis("Horizontal") * multiplier, 0);
             //r_body.AddForce(new Vector2(Input.GetAxis("Horizontal") * move_force, 0));
         }
 
@@ -31,7 +32,7 @@ public class PlayerMove : MonoBehaviour {
             r_body.drag = 10;
         } else {
             r_body.drag = 1;
-            r_body.velocity = new Vector2(input.x * 2, 0);
+            r_body.velocity = new Vector2(input.x * multiplier, 0);
             //r_body.AddForce(new Vector2(Input.GetAxis("Horizontal") * move_force, 0));
         }
 

@@ -15,8 +15,8 @@ public class PlayerColl : MonoBehaviour {
 	}
 
     void OnTriggerEnter2D(Collider2D coll) {
-        print("Y");
-        coll.CompareTag("Enemy");
-        //SceneManager.LoadScene(0);
+        if (coll.CompareTag("Enemy")) {
+            SceneManager.LoadScene(0);
+        }
     }
 }

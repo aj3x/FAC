@@ -12,6 +12,7 @@ public class EnemieSpawn : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Invoke("Spawn", max_wait);
+        Invoke("increaseDif", 15f);
         r_body = GetComponent<Rigidbody2D>();
         r_body.velocity = new Vector2(top_speed, 0);
 	}
@@ -28,7 +29,14 @@ public class EnemieSpawn : MonoBehaviour {
         }
     }
 
-
+    void increaseDif() {
+        if (min_wait == 0) {
+            GameObject.Find("Enemy").SetActive(false);
+        }
+        min_wait -= 0.05f;
+        max_wait -= 0.05f;
+        Invoke("increaseDif", 2f);
+    }
     void Spawn() {
         Instantiate<GameObject>(enemy).transform.position = gameObject.transform.position;
         Invoke("Spawn", Random.Range(min_wait, max_wait));
