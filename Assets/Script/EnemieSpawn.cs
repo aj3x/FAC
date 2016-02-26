@@ -30,9 +30,6 @@ public class EnemieSpawn : MonoBehaviour {
     }
 
     void increaseDif() {
-        if (min_wait == 0) {
-            GameObject.Find("Enemy").SetActive(false);
-        }
         min_wait -= 0.05f;
         max_wait -= 0.05f;
         Invoke("increaseDif", 2f);
